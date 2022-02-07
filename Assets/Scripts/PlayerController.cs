@@ -6,10 +6,11 @@ public class PlayerController : MonoBehaviour
 {
     private CharacterController _controller;
 
+    private float _mouseSensitivity = 100f;
     private float  _playerSpeed = 5f;
     private Vector3 _velocity;
     private float gravityValue = -9.81f;
-    private float jumpHeight = 2f;
+    private float jumpHeight = .25f;
     private bool _isGrounded;
 
     // Start is called before the first frame update
@@ -22,10 +23,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         _isGrounded = _controller.isGrounded;
-        
-        _controller.Move(transform.forward * Input.GetAxis("Vertical") * _playerSpeed * Time.deltaTime);
-        _controller.Move(transform.right * Input.GetAxis("Horizontal") * _playerSpeed * Time.deltaTime);
-        
         if(Input.GetKeyDown(KeyCode.Space) && _isGrounded)
         {
             _velocity.y = Mathf.Sqrt(jumpHeight * -3f * gravityValue);
@@ -34,7 +31,9 @@ public class PlayerController : MonoBehaviour
         {
             _velocity.y += gravityValue * Time.deltaTime;
         }
-
-        _controller.Move(_velocity * Time.deltaTime);
+        
+        _controller.Move((transform.forward * Input.GetAxis("Vertical") + transform.right * Input.GetAxis("Horizontal") + _velocity) * _playerSpeed * Time.deltaTime);
+        
+        transform.Rotate(0, Input.GetAxis("Mouse X") * _mouseSensitivity * Time.deltaTime, 0);
     }
 }
