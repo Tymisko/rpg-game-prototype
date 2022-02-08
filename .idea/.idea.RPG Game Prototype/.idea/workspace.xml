@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0db9ab43-5868-4923-ba79-82b0d6dca7c5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RPG Game Prototype/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RPG Game Prototype/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/RPG Game Prototype.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/RPG Game Prototype.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ISpawnable.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemHelper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpawnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SpawnManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Sphere.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Sphere.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +47,7 @@
       <option name="presentableId" value="Default" />
       <updated>1644255451077</updated>
       <workItem from="1644255455110" duration="5583000" />
-      <workItem from="1644303614015" duration="20206000" />
+      <workItem from="1644303614015" duration="21017000" />
     </task>
     <servers />
   </component>
