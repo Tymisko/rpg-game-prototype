@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour
     private float jumpHeight = .25f;
     private bool _isGrounded;
 
+    private Vector3 _currentPos;
+    private Quaternion _currentRot;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -31,9 +34,25 @@ public class PlayerController : MonoBehaviour
         {
             _velocity.y += gravityValue * Time.deltaTime;
         }
-        
-        _controller.Move((transform.forward * Input.GetAxis("Vertical") + transform.right * Input.GetAxis("Horizontal") + _velocity) * _playerSpeed * Time.deltaTime);
+
+        _controller.Move(
+            (transform.forward * Input.GetAxis("Vertical") + transform.right * Input.GetAxis("Horizontal") +
+             _velocity) * _playerSpeed * Time.deltaTime);
         
         transform.Rotate(0, Input.GetAxis("Mouse X") * _mouseSensitivity * Time.deltaTime, 0);
+
+        Ray ray = new Ray(transform.position, -transform.up);
+        if (Physics.Raycast(ray, out RaycastHit hit, 1.5f))
+        {
+            Debug.DrawLine(transform.position, hit.point, Color.green);
+
+            _currentRot = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
+            _currentPos = new Vector3(transform.position.x, hit.point.y, transform.position.z);
+        }
+
+        if (_isGrounded)
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation, _currentRot, Time.deltaTime * 5f);
+        }
     }
 }
