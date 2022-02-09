@@ -6,13 +6,11 @@ public static class ItemHelper
     private static readonly System.Random _random = new System.Random();
     public static Dictionary<Color, string> ItemsColors { get; private set; }
     public static List<Color> ItemsColorsKeys;
-    public static List<string> ItemsColorsValues;
+    private static List<string> ItemsColorsValues;
 
     static ItemHelper()
     {
         InitItemsColors();
-        ItemsColorsKeys = new List<Color>(ItemsColors.Keys);
-        ItemsColorsValues = new List<string>(ItemsColors.Values);
     }
     
     private static void InitItemsColors()
@@ -23,11 +21,13 @@ public static class ItemHelper
             {UnityEngine.Color.green, "Green"},
             {UnityEngine.Color.yellow, "Yellow"}
         };
+        ItemsColorsKeys = new List<Color>(ItemsColors.Keys);
+        ItemsColorsValues = new List<string>(ItemsColors.Values);
     }
 
     public static Color GetRandomItemColor()
     {
-        int randomIndex = _random.Next(0, ItemsColors.Count);
+        var randomIndex = _random.Next(0, ItemsColors.Count);
         return ItemsColorsKeys[randomIndex];
     }
 }

@@ -7,7 +7,7 @@ public class SpawnManager : MonoBehaviour
     public List<GameObject> ItemsPrefab;
     private List<GameObject> _spawnedItems = new List<GameObject>();
 
-    private int _itemsPerWave = 3;
+    private const int _itemsPerWave = 3;
     
     private const float TopBoundary = 14f;
     private const float BottomBoundary = -14f;
@@ -47,7 +47,9 @@ public class SpawnManager : MonoBehaviour
         {
             var gameObject = Instantiate(GetRandomItem(), GenerateSpawnPos(), Quaternion.identity);
             _spawnedItems.Add(gameObject);
+            
             gameObject.GetComponent<Sphere>().OnSphereRemoved += SphereRemovedEventHandler;
+            PlayerInventory.S
         }
     }
     
