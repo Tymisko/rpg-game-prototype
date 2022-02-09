@@ -5,7 +5,6 @@ namespace Assets.Scripts
 {
     public class PlayerInventory : MonoBehaviour
     {
-        public List<GameObject> Inventory = new List<GameObject>();
         private Dictionary<Color, int> _itemColorCounter = new Dictionary<Color, int>();
 
         void Start()
@@ -41,7 +40,6 @@ namespace Assets.Scripts
         {
             if (other.gameObject.CompareTag(Tags.Item))
             {
-                Inventory.Add(other.gameObject);
                 _itemColorCounter[other.gameObject.GetComponent<Item>().Color] += 1;
             }
         }

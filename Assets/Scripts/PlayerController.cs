@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameObject Body;
+    private Animator _animator;
     private CharacterController _controller;
     private const float MouseSensitivity = 100f;
 
@@ -17,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _controller = GetComponent<CharacterController>();
+        _animator = Body.GetComponent<Animator>();
     }
 
     private void Update()
@@ -30,7 +34,7 @@ public class PlayerController : MonoBehaviour
         var xAxisMouseInput = Input.GetAxis("Mouse X");
         MoueSteering(xAxisMouseInput);
 
-        AlignPlayerToSurface();
+        // AlignPlayerToSurface();
     }
 
     private void AlignPlayerToSurface()
@@ -55,6 +59,42 @@ public class PlayerController : MonoBehaviour
 
     private void MovePlayer(float verticalInput, float horizontalInput, Vector3 jumpDirection)
     {
+        if(Input.GetKey(KeyCode.W))
+            _animator.SetBool("IsMovingForward", true);
+        else
+            _animator.SetBool("IsMovingForward", false);
+        
+        if(Input.GetKey(KeyCode.S))
+            _animator.SetBool("IsMovingBackward", true);
+        else
+            _animator.SetBool("IsMovingBackward", false);
+        
+        if(Input.GetKey(KeyCode.A))
+            _animator.SetBool("IsMovingLeft", true);
+        else
+            _animator.SetBool("IsMovingLeft", false);
+        
+        if(Input.GetKey(KeyCode.D))
+            _animator.SetBool("IsMovingRight", true);
+        else
+            _animator.SetBool("IsMovingRight", false);
+        
+        // if(Input.GetKey(KeyCode.Space))
+        //     _animator.SetBool("Jump", true);
+        // else if(_isGrounded)
+        //     _animator.SetBool("Jump", false);
+
+        // if (Input.GetKey(KeyCode.W))
+        // {
+        //     _animator.SetBool("MoveForward", true);
+        //     _animator.SetBool("IsIdle", false);
+        // }
+        //     
+        // else
+        // {
+        //     _animator.SetBool("MoveForward", false);
+        //     _animator.SetBool("IsIdle", true);
+        // }
         _controller.Move((transform.forward * verticalInput + transform.right * horizontalInput + jumpDirection) *
                          PlayerSpeed * Time.deltaTime);
     }

@@ -16,5 +16,10 @@ namespace Assets.Scripts
                 Destroy(gameObject);
             }
         }
+
+        protected object Clone()
+        {
+            return this.MemberwiseClone();
+        }
     }
 }
