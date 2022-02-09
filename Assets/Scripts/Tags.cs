@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public static class Tags
+namespace Assets.Scripts
 {
-    public const string Ground = "Ground";
-    public const string Item = "Item";
-    public const string Player = "Player";
+    public static class Tags
+    {
+        public const string Ground = "Ground";
+        public const string Item = "Item";
+        public const string Player = "Player";
+    }
 }

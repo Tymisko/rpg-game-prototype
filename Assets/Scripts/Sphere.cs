@@ -1,11 +1,15 @@
-using System;
 using UnityEngine;
 
-public class Sphere : Item
-{ 
-    void Start()
+namespace Assets.Scripts
+{
+    public class Sphere : Item
     {
-        Color = ItemHelper.GetRandomItemColor();
-        gameObject.GetComponent<MeshRenderer>().material.color = Color;
+        public SphereScriptableObject ScriptableObject;
+
+        void Start()
+        {
+            Color = ItemHelper.GetRandomItemColor();
+            gameObject.GetComponent<MeshRenderer>().material.color = Color;
+        }
     }
 }

@@ -1,19 +1,20 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Item : MonoBehaviour, ICollectable
+namespace Assets.Scripts
 {
-    public event Action<GameObject> OnItemRemoved;
-    public Color Color { get; protected set; }
-
-    protected void OnTriggerEnter(Collider other)
+    public abstract class Item : MonoBehaviour, ICollectable
     {
-        if (other.gameObject.CompareTag(Tags.Player))
+        public event Action<GameObject> OnItemRemoved;
+        public Color Color { get; protected set; }
+
+        protected void OnTriggerEnter(Collider other)
         {
-            OnItemRemoved?.Invoke(gameObject);
-            Destroy(gameObject);
+            if (other.gameObject.CompareTag(Tags.Player))
+            {
+                OnItemRemoved?.Invoke(gameObject);
+                Destroy(gameObject);
+            }
         }
     }
 }

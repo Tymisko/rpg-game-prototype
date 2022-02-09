@@ -2,52 +2,54 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class SpawnManager : MonoBehaviour
+namespace Assets.Scripts
 {
-    public List<GameObject> ItemsPrefab;
-    private List<GameObject> _spawnedItems = new List<GameObject>();
-    
-    private int _itemCount;
-    private void Start()
+    public class SpawnManager : MonoBehaviour
     {
-        SpawnItemWave(3);
-    }
-    
-    public GameObject GetRandomItem()
-    {
-        return ItemsPrefab[Random.Range(0, ItemsPrefab.Count)];
-    }
-    
-    private static Vector3 GenerateSpawnPos()
-    {
-        const float topBoundary = 14f;
-        const float bottomBoundary = -14f;
-        const float leftBoundary = -14f;
-        const float rightBoundary = 14f;
-        
-        return new Vector3(
-            Random.Range(leftBoundary, rightBoundary),
-            0.5f,
-            Random.Range(bottomBoundary, topBoundary));
-    }
+        public List<GameObject> ItemsPrefab;
 
-    private void ItemRemovedHandler(GameObject item)
-    {
-        _spawnedItems.Remove(item);
-        
-        if(!_spawnedItems.Any())
-            SpawnItemWave(3);
-    }
+        private List<GameObject> _spawnedItems = new List<GameObject>();
 
-    private void SpawnItemWave(int itemsNumber)
-    {
-        for (var i = 0; i < itemsNumber; i++)
+        private void Start()
         {
-            var gameObject = Instantiate(GetRandomItem(), GenerateSpawnPos(), Quaternion.identity);
-            _spawnedItems.Add(gameObject);
-            
-            gameObject.GetComponent<Item>().OnItemRemoved += ItemRemovedHandler;
+            SpawnItemWave(3);
+        }
+
+        private GameObject GetRandomItem()
+        {
+            return ItemsPrefab[Random.Range(0, ItemsPrefab.Count)];
+        }
+
+        private static Vector3 GenerateSpawnPos()
+        {
+            const float topBoundary = 14f;
+            const float bottomBoundary = -14f;
+            const float leftBoundary = -14f;
+            const float rightBoundary = 14f;
+
+            return new Vector3(
+                Random.Range(leftBoundary, rightBoundary),
+                0.5f,
+                Random.Range(bottomBoundary, topBoundary));
+        }
+
+        private void ItemRemovedHandler(GameObject item)
+        {
+            _spawnedItems.Remove(item);
+
+            if (!_spawnedItems.Any())
+                SpawnItemWave(3);
+        }
+
+        private void SpawnItemWave(int itemsNumber)
+        {
+            for (var i = 0; i < itemsNumber; i++)
+            {
+                var gameObj = Instantiate(GetRandomItem(), GenerateSpawnPos(), Quaternion.identity);
+                _spawnedItems.Add(gameObj);
+
+                gameObj.GetComponent<Item>().OnItemRemoved += ItemRemovedHandler;
+            }
         }
     }
-    
 }

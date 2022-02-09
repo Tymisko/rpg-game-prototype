@@ -1,51 +1,49 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Reflection;
 using UnityEngine;
 
-public class PlayerInventory : MonoBehaviour
+namespace Assets.Scripts
 {
-    private List<InventoryItem> _inventory = new List<InventoryItem>();
-    private Dictionary<Color, int> _itemColorCounter = new Dictionary<Color, int>();
-    
-    void Start()
+    public class PlayerInventory : MonoBehaviour
     {
-        InitItemCounter();
-    }
-    
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.I))
-            DisplayInventory();
-    }
+        public List<GameObject> Inventory = new List<GameObject>();
+        private Dictionary<Color, int> _itemColorCounter = new Dictionary<Color, int>();
 
-    public void DisplayInventory()
-    {
-        Debug.Log("Inventory");
-        foreach (var itemColor in _itemColorCounter)
+        void Start()
         {
-            Debug.Log($"{ItemHelper.ItemsColors[itemColor.Key]} x {itemColor.Value}");
+            InitItemCounter();
         }
-    }
-        
-    private void InitItemCounter()
-    {
-        foreach (var color in ItemHelper.ItemsColorsKeys)
-        {
-            if(!_itemColorCounter.ContainsKey(color)) 
-                _itemColorCounter.Add(color, 0);
-        }
-    }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag(Tags.Item))
+        void Update()
         {
-            var item = other.gameObject.GetComponent<Item>();
-            var inventoryItem = new InventoryItem(item.name, item.Color);
-            _itemColorCounter[item.Color] += 1;
-            _inventory.Add(inventoryItem);
+            if (Input.GetKeyDown(KeyCode.I))
+                DisplayInventory();
         }
-    }   
+
+        private void DisplayInventory()
+        {
+            Debug.Log("Inventory");
+            foreach (var itemColor in _itemColorCounter)
+            {
+                Debug.Log($"{ItemHelper.ItemsColors[itemColor.Key]} x {itemColor.Value}");
+            }
+        }
+
+        private void InitItemCounter()
+        {
+            foreach (var color in ItemHelper.ItemsColorsKeys)
+            {
+                if (!_itemColorCounter.ContainsKey(color))
+                    _itemColorCounter.Add(color, 0);
+            }
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.CompareTag(Tags.Item))
+            {
+                Inventory.Add(other.gameObject);
+                _itemColorCounter[other.gameObject.GetComponent<Item>().Color] += 1;
+            }
+        }
+    }
 }
