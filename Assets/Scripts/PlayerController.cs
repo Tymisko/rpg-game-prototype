@@ -79,22 +79,9 @@ public class PlayerController : MonoBehaviour
         else
             _animator.SetBool("IsMovingRight", false);
         
-        // if(Input.GetKey(KeyCode.Space))
-        //     _animator.SetBool("Jump", true);
-        // else if(_isGrounded)
-        //     _animator.SetBool("Jump", false);
-
-        // if (Input.GetKey(KeyCode.W))
-        // {
-        //     _animator.SetBool("MoveForward", true);
-        //     _animator.SetBool("IsIdle", false);
-        // }
-        //     
-        // else
-        // {
-        //     _animator.SetBool("MoveForward", false);
-        //     _animator.SetBool("IsIdle", true);
-        // }
+        if(Input.GetKey(KeyCode.Space) && _isGrounded)
+            _animator.SetTrigger("Jumped");
+        
         _controller.Move((transform.forward * verticalInput + transform.right * horizontalInput + jumpDirection) *
                          PlayerSpeed * Time.deltaTime);
     }
