@@ -3,7 +3,7 @@ using UnityEngine;
 
 public static class ItemHelper
 {
-    private static readonly System.Random _random = new System.Random();
+    private static readonly System.Random Random = new System.Random();
     public static Dictionary<Color, string> ItemsColors { get; private set; }
     public static List<Color> ItemsColorsKeys;
     private static List<string> ItemsColorsValues;
@@ -27,7 +27,7 @@ public static class ItemHelper
 
     public static Color GetRandomItemColor()
     {
-        var randomIndex = _random.Next(0, ItemsColors.Count);
+        var randomIndex = Random.Next(0, ItemsColors.Count);
         return ItemsColorsKeys[randomIndex];
     }
 }

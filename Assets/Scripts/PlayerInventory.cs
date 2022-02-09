@@ -6,8 +6,6 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    public GameObject spherePrefab;
-    
     private List<InventoryItem> _inventory = new List<InventoryItem>();
     private Dictionary<Color, int> _itemColorCounter = new Dictionary<Color, int>();
     
@@ -44,7 +42,7 @@ public class PlayerInventory : MonoBehaviour
     {
         if (other.gameObject.CompareTag(Tags.Item))
         {
-            var item = other.gameObject.GetComponent<Sphere>();
+            var item = other.gameObject.GetComponent<Item>();
             var inventoryItem = new InventoryItem(item.name, item.Color);
             _itemColorCounter[item.Color] += 1;
             _inventory.Add(inventoryItem);

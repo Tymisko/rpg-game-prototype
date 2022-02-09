@@ -6,18 +6,11 @@ public class SpawnManager : MonoBehaviour
 {
     public List<GameObject> ItemsPrefab;
     private List<GameObject> _spawnedItems = new List<GameObject>();
-
-    private const int _itemsPerWave = 3;
     
-    private const float TopBoundary = 14f;
-    private const float BottomBoundary = -14f;
-    private const float LeftBoundary = -14f;
-    private const float RightBoundary = 14f;
-
     private int _itemCount;
     private void Start()
     {
-        SpawnItemWave();
+        SpawnItemWave(3);
     }
     
     public GameObject GetRandomItem()
@@ -27,29 +20,33 @@ public class SpawnManager : MonoBehaviour
     
     private static Vector3 GenerateSpawnPos()
     {
+        const float topBoundary = 14f;
+        const float bottomBoundary = -14f;
+        const float leftBoundary = -14f;
+        const float rightBoundary = 14f;
+        
         return new Vector3(
-            Random.Range(LeftBoundary, RightBoundary),
+            Random.Range(leftBoundary, rightBoundary),
             0.5f,
-            Random.Range(BottomBoundary, TopBoundary));
+            Random.Range(bottomBoundary, topBoundary));
     }
 
-    private void SphereRemovedEventHandler(GameObject sphere)
+    private void ItemRemovedHandler(GameObject item)
     {
-        _spawnedItems.Remove(sphere);
+        _spawnedItems.Remove(item);
         
         if(!_spawnedItems.Any())
-            SpawnItemWave();
+            SpawnItemWave(3);
     }
 
-    private void SpawnItemWave()
+    private void SpawnItemWave(int itemsNumber)
     {
-        for (var i = 0; i < _itemsPerWave; i++)
+        for (var i = 0; i < itemsNumber; i++)
         {
             var gameObject = Instantiate(GetRandomItem(), GenerateSpawnPos(), Quaternion.identity);
             _spawnedItems.Add(gameObject);
             
-            gameObject.GetComponent<Sphere>().OnSphereRemoved += SphereRemovedEventHandler;
-            PlayerInventory.S
+            gameObject.GetComponent<Item>().OnItemRemoved += ItemRemovedHandler;
         }
     }
     

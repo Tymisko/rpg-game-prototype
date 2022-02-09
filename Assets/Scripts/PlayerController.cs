@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
    private const float MouseSensitivity = 100f;
    
    private const float PlayerSpeed = 5f;
+   private Vector3 _velocity;
    
    private const float GravityValue = -9.81f;
    private const float JumpHeight = .5f;
@@ -20,14 +21,15 @@ public class PlayerController : MonoBehaviour
 
    private void Update()
    {
-       Vector3 jumpDirection = GetJumpDirection();
+       GetJumpDirection();
+       
        float verticalInput = Input.GetAxis("Vertical");
        float horizontalInput = Input.GetAxis("Horizontal");
-       MovePlayer(verticalInput, horizontalInput, jumpDirection);
-
+       MovePlayer(verticalInput, horizontalInput, _velocity);
+       
        var xAxisMouseInput = Input.GetAxis("Mouse X");
        MoueSteering(xAxisMouseInput);
-
+       
        AlignPlayerToSurface();
    }
 
@@ -56,22 +58,17 @@ public class PlayerController : MonoBehaviour
        _controller.Move((transform.forward * verticalInput + transform.right * horizontalInput + jumpDirection) * PlayerSpeed * Time.deltaTime);
    }
 
-   private Vector3 GetJumpDirection()
+   private void GetJumpDirection()
    {
-       Vector3 velocity = new Vector3();
-
        _isGrounded = _controller.isGrounded;
-       
-       if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
+       if(Input.GetKeyDown(KeyCode.Space) && _isGrounded)
        {
-           velocity.y = Mathf.Sqrt(JumpHeight * -3f * GravityValue);
+           _velocity.y = Mathf.Sqrt(JumpHeight * -3f * GravityValue);
        }
        else
        {
-           velocity.y += GravityValue * Time.deltaTime * .5f;
+           _velocity.y += GravityValue * Time.deltaTime * .5f;
        }
-
-       return velocity;
    }
 }
 
