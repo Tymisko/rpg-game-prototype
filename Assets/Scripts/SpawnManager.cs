@@ -1,9 +1,11 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
     public List<GameObject> ItemsPrefab;
+    private List<GameObject> _spawnedItems = new List<GameObject>();
 
     private int _itemsPerWave = 3;
     
@@ -13,19 +15,9 @@ public class SpawnManager : MonoBehaviour
     private const float RightBoundary = 14f;
 
     private int _itemCount;
-    // Start is called before the first frame update
     private void Start()
     {
         SpawnItemWave();
-    }
-
-    // Update is called once per frame
-    private void Update()
-    {
-        _itemCount = FindObjectsOfType<Sphere>().Length;
-        
-        if(_itemCount == 0)
-            SpawnItemWave();
     }
     
     public GameObject GetRandomItem()
@@ -41,12 +33,21 @@ public class SpawnManager : MonoBehaviour
             Random.Range(BottomBoundary, TopBoundary));
     }
 
+    private void SphereRemovedEventHandler(GameObject sphere)
+    {
+        _spawnedItems.Remove(sphere);
+        
+        if(!_spawnedItems.Any())
+            SpawnItemWave();
+    }
 
     private void SpawnItemWave()
     {
         for (var i = 0; i < _itemsPerWave; i++)
         {
-            Instantiate(GetRandomItem(), GenerateSpawnPos(), Quaternion.identity);
+            var gameObject = Instantiate(GetRandomItem(), GenerateSpawnPos(), Quaternion.identity);
+            _spawnedItems.Add(gameObject);
+            gameObject.GetComponent<Sphere>().OnSphereRemoved += SphereRemovedEventHandler;
         }
     }
     

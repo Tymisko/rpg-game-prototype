@@ -3,10 +3,11 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
    private CharacterController _controller;
-
    private const float MouseSensitivity = 100f;
+   
    private const float PlayerSpeed = 5f;
    private Vector3 _velocity;
+   
    private const float GravityValue = -9.81f;
    private const float JumpHeight = .5f;
    private bool _isGrounded = true;
@@ -47,14 +48,6 @@ public class PlayerController : MonoBehaviour
        if (_isGrounded)
        {
            transform.rotation = Quaternion.Lerp(transform.rotation, _currentRot, Time.deltaTime * 5f);
-       }
-   }
-
-   private void OnTriggerEnter(Collider other)
-   {
-       if (other.gameObject.CompareTag(Tags.Item))
-       {
-           Destroy(other.gameObject);
        }
    }
 }

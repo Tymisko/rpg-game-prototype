@@ -10,13 +10,11 @@ public class PlayerInventory : MonoBehaviour
 
     private bool _isInvOpened = false;
     
-    // Start is called before the first frame update
     void Start()
     {
         InitItemCounter();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.I))
@@ -67,7 +65,7 @@ public class PlayerInventory : MonoBehaviour
         }
     }
     
-public void ClearLog()
+private void ClearLog()
 {
     var assembly = Assembly.GetAssembly(typeof(UnityEditor.Editor));
     var type = assembly.GetType("UnityEditor.LogEntries");
