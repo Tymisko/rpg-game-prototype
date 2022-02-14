@@ -1,6 +1,8 @@
 using System;
 using Assets.Scripts.Helpers;
 using UnityEngine;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
 
 namespace Assets.Scripts.Player
 {
@@ -19,6 +21,7 @@ namespace Assets.Scripts.Player
         private Vector3 _jumpDirection;
 
         public static bool IsGrounded = true;
+        private const float MovementBound = 14.5f;
 
         public static event Action OnPlayerMoved;
         public static event Action OnPlayerJumped;
@@ -42,7 +45,69 @@ namespace Assets.Scripts.Player
                 var xAxisMouseInput = Input.GetAxis("Mouse X");
                 MoueSteering(xAxisMouseInput);
 
+                KeepPlayerInMapBound();
                 AlignPlayerToSurface();
+            }
+        }
+
+        private bool IsPlayerInMovementBound(out char axisOutOfScope)
+        {
+            bool isInXScope = true;
+            bool isInZScope = true;
+            axisOutOfScope = ' ';
+
+            if (!(transform.position.x < MovementBound && transform.position.x > -MovementBound))
+            {
+                axisOutOfScope = 'x';
+                isInXScope = false;
+            }
+
+            if (!(transform.position.z < MovementBound && transform.position.z > -MovementBound))
+            {
+                axisOutOfScope = 'z';
+                isInZScope = false;
+            }
+
+            return (isInXScope && isInZScope);
+        }
+
+        private void KeepPlayerInMapBound()
+        {
+            if (!IsPlayerInMovementBound(out char axisOutOfScope))
+            {
+                Vector3 newPosition = transform.position;
+                switch (axisOutOfScope)
+                {
+                    case 'x':
+                    {
+                        if (transform.position.x > MovementBound)
+                        {
+                            newPosition.x = MovementBound;
+                        }
+                        else if (transform.position.x < -MovementBound)
+                        {
+                            newPosition.x = -MovementBound;
+                        }
+
+                        break;
+                    }
+
+                    case 'z':
+                    {
+                        if (transform.position.z > MovementBound)
+                        {
+                            newPosition.z = MovementBound;
+                        }
+                        else if (transform.position.z < -MovementBound)
+                        {
+                            newPosition.z = -MovementBound;
+                        }
+
+                        break;
+                    }
+                }
+
+                transform.position = newPosition;
             }
         }
 
@@ -75,7 +140,7 @@ namespace Assets.Scripts.Player
                  + transform.right * horizontalInput
                  + jumpDirection) * PlayerSpeed * Time.deltaTime);
 
-            if (InputHelper.AnyKewDown(InputHelper.MovementKeys) && IsGrounded)
+            if (InputHelper.AnyKeyDown(InputHelper.MovementKeys) && IsGrounded)
                 OnPlayerMoved?.Invoke();
 
             if (Input.GetKey(KeyCode.Space) && IsGrounded)

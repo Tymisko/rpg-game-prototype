@@ -11,7 +11,7 @@ namespace Assets.Scripts.Helpers
             KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.LeftArrow, KeyCode.RightArrow
         };
 
-        public static bool AnyKewDown(List<KeyCode> keys)
+        public static bool AnyKeyDown(List<KeyCode> keys)
         {
             foreach (var key in keys)
             {

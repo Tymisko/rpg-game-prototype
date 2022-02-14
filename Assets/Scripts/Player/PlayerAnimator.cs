@@ -28,15 +28,33 @@ namespace Assets.Scripts.Player
 
         private void LoadMovementAnimations()
         {
-            _playerAnimator.SetBool("IsMovingForward", Input.GetKey(KeyCode.W));
-            _playerAnimator.SetBool("IsMovingBackward", Input.GetKey(KeyCode.S));
-            _playerAnimator.SetBool("IsMovingLeft", Input.GetKey(KeyCode.A));
-            _playerAnimator.SetBool("IsMovingRight", Input.GetKey(KeyCode.D));
+            // Forward
+            if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+                _playerAnimator.SetBool("IsMovingForward", true);
+            else if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))
+                _playerAnimator.SetBool("IsMovingForward", false);
+            
+            // Backward
+            if(Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+                _playerAnimator.SetBool("IsMovingBackward", true);
+            else if (Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow))
+                _playerAnimator.SetBool("IsMovingBackward", false);
+            
+            // Left
+            if(Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+                _playerAnimator.SetBool("IsMovingLeft", true);
+            else if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.LeftArrow))
+                _playerAnimator.SetBool("IsMovingLeft", false);
+            // Right
+            if(Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+                _playerAnimator.SetBool("IsMovingRight", true);
+            else if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.RightArrow))
+                _playerAnimator.SetBool("IsMovingRight", false);
         }
 
         private void LoadJumpAnimation()
         {
-            if (Input.GetKey(KeyCode.Space) && PlayerController.IsGrounded)
+            if (Input.GetKeyDown(KeyCode.Space) && PlayerController.IsGrounded)
                 _playerAnimator.SetTrigger("Jumped");
         }
 

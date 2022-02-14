@@ -165,7 +165,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &109404627
 GameObject:
@@ -233,7 +233,7 @@ Transform:
   - {fileID: 181906730}
   - {fileID: 963194228}
   m_Father: {fileID: 1759045325}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -21.888, y: 258.326, z: 2.962}
 --- !u!1 &181906729
 GameObject:
@@ -330,7 +330,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &222890760
 MonoBehaviour:
@@ -1129,7 +1129,7 @@ Transform:
   m_Children:
   - {fileID: 1020473232}
   m_Father: {fileID: 1759045325}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 20.787, y: -142.996, z: -2.113}
 --- !u!1 &1468883266
 GameObject:
@@ -1435,11 +1435,11 @@ PrefabInstance:
     - target: {fileID: 1630794972795428178, guid: 5c21f602d4eefcc4dbcdd55321142ed8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 945e2f586a1a63a49a99d9080a8e9f24, type: 2}
+      objectReference: {fileID: 2100000, guid: 9b658d7d25197a54fa73d7411ef12be0, type: 2}
     - target: {fileID: 1630794972795428178, guid: 5c21f602d4eefcc4dbcdd55321142ed8, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: 021b3e6e02301e2408244805ff9c46f4, type: 2}
+      objectReference: {fileID: 2100000, guid: 9b658d7d25197a54fa73d7411ef12be0, type: 2}
     - target: {fileID: 5866666021909216657, guid: 5c21f602d4eefcc4dbcdd55321142ed8, type: 3}
       propertyPath: m_Controller
       value: 
@@ -1481,7 +1481,7 @@ GameObject:
   - component: {fileID: 1759045325}
   - component: {fileID: 1759045324}
   m_Layer: 0
-  m_Name: Cutscene
+  m_Name: elevationCutscene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1511,8 +1511,8 @@ MonoBehaviour:
   m_LayerIndex: 0
   m_ShowDebugText: 0
   m_ChildCameras:
-  - {fileID: 1349823061}
   - {fileID: 109404628}
+  - {fileID: 1349823061}
   m_Instructions:
   - m_FullHash: 586221530
     m_VirtualCamera: {fileID: 109404628}
@@ -1548,8 +1548,8 @@ Transform:
   m_LocalPosition: {x: 2.8912997, y: -0.977581, z: -0.98638225}
   m_LocalScale: {x: 1, y: 3.677984, z: 1}
   m_Children:
-  - {fileID: 1349823062}
   - {fileID: 109404629}
+  - {fileID: 1349823062}
   - {fileID: 1870882988}
   m_Father: {fileID: 2066805766}
   m_RootOrder: 0
@@ -1590,7 +1590,7 @@ CharacterController:
   serializedVersion: 2
   m_Height: 2
   m_Radius: 0.5
-  m_SlopeLimit: 45
+  m_SlopeLimit: 40
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
@@ -1661,7 +1661,7 @@ Transform:
   m_Children:
   - {fileID: 1469272334}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1814737223
 MonoBehaviour:
@@ -1910,7 +1910,7 @@ Transform:
   m_Children:
   - {fileID: 1759045325}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2066805767
 MonoBehaviour:
