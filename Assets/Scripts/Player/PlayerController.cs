@@ -1,5 +1,3 @@
-using System;
-using Assets.Scripts.Helpers;
 using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
@@ -22,9 +20,6 @@ namespace Assets.Scripts.Player
 
         public static bool IsGrounded = true;
         private const float MovementBound = 14.5f;
-
-        public static event Action OnPlayerMoved;
-        public static event Action OnPlayerJumped;
 
         private void Awake()
         {
@@ -139,12 +134,6 @@ namespace Assets.Scripts.Player
                 (transform.forward * verticalInput
                  + transform.right * horizontalInput
                  + jumpDirection) * PlayerSpeed * Time.deltaTime);
-
-            if (InputHelper.AnyKeyDown(InputHelper.MovementKeys) && IsGrounded)
-                OnPlayerMoved?.Invoke();
-
-            if (Input.GetKey(KeyCode.Space) && IsGrounded)
-                OnPlayerJumped?.Invoke();
         }
 
         private void SetJumpDirection()

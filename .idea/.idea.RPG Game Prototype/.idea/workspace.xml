@@ -4,10 +4,13 @@
     <list default="true" id="0db9ab43-5868-4923-ba79-82b0d6dca7c5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RPG Game Prototype/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RPG Game Prototype/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Cursors/Cursors 64/Cursor_Basic.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cursors/Cursors 64/Cursor_Basic.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Cursors/Cursors 64/Cursor_Basic2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cursors/Cursors 64/Cursor_Basic2.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Kevin Iglesias/Basic Motions/Animations/Movement/BasicMotions@Jump01.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Kevin Iglesias/Basic Motions/Animations/Movement/BasicMotions@Jump01.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Kevin Iglesias/Basic Motions/Animations/Movement/BasicMotions@Walk01.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Kevin Iglesias/Basic Motions/Animations/Movement/BasicMotions@Walk01.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Animations/MovementAnimationsController.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Animations/MovementAnimationsController.controller" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/RPG Game Prototype.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/RPG Game Prototype.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Helpers/InputHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Helpers/InputHelper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerAnimator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerAnimator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerAudio.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerAudio.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,6 +29,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerAudio.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Tags.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FootSteps.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerAnimator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Item.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Helpers/InputHelper.cs" root0="FORCE_HIGHLIGHTING" />
@@ -62,7 +66,7 @@
       <workItem from="1644793261214" duration="101000" />
       <workItem from="1644793487884" duration="15000" />
       <workItem from="1644793599938" duration="610000" />
-      <workItem from="1644829504357" duration="4889000" />
+      <workItem from="1644829504357" duration="6935000" />
     </task>
     <servers />
   </component>
