@@ -1252,6 +1252,7 @@ GameObject:
   - component: {fileID: 1468883269}
   - component: {fileID: 1468883268}
   - component: {fileID: 1468883267}
+  - component: {fileID: 1468883271}
   m_Layer: 0
   m_Name: Elevation
   m_TagString: Ground
@@ -1330,12 +1331,24 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1468883266}
   m_LocalRotation: {x: -0.000000033021763, y: 0.8660259, z: -0.4999992, w: 0.0000029299604}
-  m_LocalPosition: {x: -14.478268, y: 1.6949997, z: -12.770795}
+  m_LocalPosition: {x: -15.5, y: 2, z: -13}
   m_LocalScale: {x: 1, y: 8, z: 1}
   m_Children: []
   m_Father: {fileID: 604808162}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 60, y: 179.999, z: 0}
+--- !u!114 &1468883271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468883266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 302422c6c4a61e347ba01bdf9e14581b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1469272329 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5c21f602d4eefcc4dbcdd55321142ed8, type: 3}

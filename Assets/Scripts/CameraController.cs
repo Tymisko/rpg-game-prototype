@@ -9,8 +9,8 @@ namespace Assets.Scripts
         private static bool _cutsceneTriggered;
 
         private const int CutsceneCd = 5;
-        private const int CutsceneDuration = 2;
-        private bool _isCutsceneOnCooldown = false;
+        public const int CutsceneDuration = 2;
+        private bool _isCutsceneOnCooldown;
 
         public static bool CutsceneTriggered => _cutsceneTriggered;
 
