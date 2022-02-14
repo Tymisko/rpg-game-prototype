@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Assets.Scripts.Helpers;
+using Assets.Scripts.Items;
 using UnityEngine;
 
 namespace Assets.Scripts.Player
@@ -39,9 +40,10 @@ namespace Assets.Scripts.Player
         }
 
         public static event Action OnItemCollected;
+
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag(Tags.Item))
+            if (other.gameObject.CompareTag(TagsHelper.Item))
             {
                 _itemColorCounter[other.gameObject.GetComponent<Item>().Color] += 1;
                 OnItemCollected?.Invoke();

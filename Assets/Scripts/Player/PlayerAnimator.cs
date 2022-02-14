@@ -1,4 +1,5 @@
 using System;
+using Assets.Scripts.Helpers;
 using UnityEngine;
 
 namespace Assets.Scripts.Player
@@ -29,24 +30,24 @@ namespace Assets.Scripts.Player
         private void LoadMovementAnimations()
         {
             // Forward
-            if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
                 _playerAnimator.SetBool("IsMovingForward", true);
             else if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))
                 _playerAnimator.SetBool("IsMovingForward", false);
-            
+
             // Backward
-            if(Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
                 _playerAnimator.SetBool("IsMovingBackward", true);
             else if (Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow))
                 _playerAnimator.SetBool("IsMovingBackward", false);
-            
+
             // Left
-            if(Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
                 _playerAnimator.SetBool("IsMovingLeft", true);
             else if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.LeftArrow))
                 _playerAnimator.SetBool("IsMovingLeft", false);
             // Right
-            if(Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+            if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
                 _playerAnimator.SetBool("IsMovingRight", true);
             else if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.RightArrow))
                 _playerAnimator.SetBool("IsMovingRight", false);
@@ -62,7 +63,7 @@ namespace Assets.Scripts.Player
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag(Tags.CutsceneTrigger))
+            if (other.gameObject.CompareTag(TagsHelper.CutsceneTrigger))
             {
                 OnElevationCutsceneTriggered?.Invoke();
             }
