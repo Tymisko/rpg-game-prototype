@@ -1,5 +1,4 @@
 using System.Collections;
-using Assets.Scripts.Player;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -19,10 +18,10 @@ namespace Assets.Scripts
         {
             _cutsceneTriggered = false;
             _cameraAnimator = GetComponent<Animator>();
-            PlayerAnimator.OnElevationCutsceneTriggered += PlayerAnimatorOnElevationCutsceneTriggered;
+            LeverController.OnLeverLowered += PlayElevationCutscene;
         }
 
-        private void PlayerAnimatorOnElevationCutsceneTriggered()
+        private void PlayElevationCutscene()
         {
             if (!_isCutsceneOnCooldown)
             {

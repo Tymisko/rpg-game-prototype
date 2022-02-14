@@ -1,5 +1,3 @@
-using System;
-using Assets.Scripts.Helpers;
 using UnityEngine;
 
 namespace Assets.Scripts.Player
@@ -59,15 +57,6 @@ namespace Assets.Scripts.Player
                 _playerAnimator.SetTrigger("Jumped");
         }
 
-        public static event Action OnElevationCutsceneTriggered;
-
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.gameObject.CompareTag(TagsHelper.CutsceneTrigger))
-            {
-                OnElevationCutsceneTriggered?.Invoke();
-            }
-        }
 
         private void ResetMovementAnimations()
         {
@@ -75,6 +64,8 @@ namespace Assets.Scripts.Player
             _playerAnimator.SetBool("IsMovingBackward", false);
             _playerAnimator.SetBool("IsMovingLeft", false);
             _playerAnimator.SetBool("IsMovingRight", false);
+            
+            transform.position = new Vector3(transform.position.x, 0, transform.position.z);
         }
     }
 }

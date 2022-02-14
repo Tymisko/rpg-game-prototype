@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -19,17 +20,16 @@ namespace Assets.Scripts
         private float _timeStartedSlerping;
         private float _timeTakenDuringSlerp = 1f;
 
-        private bool _leverClicked = false;
+        private bool _leverLowered;
 
-        private void Awake()
-        {
-        }
+        public static event Action OnLeverLowered;
         
         private void OnMouseDown()
         {
-            if (!_leverClicked)
+            if (!_leverLowered)
             {
-                _leverClicked = true;
+                OnLeverLowered?.Invoke();
+                _leverLowered = true;
                 RotateLever();
             }
         }
