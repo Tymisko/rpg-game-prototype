@@ -7,6 +7,10 @@ namespace Assets.Scripts
 {
     public class SpawnManager : MonoBehaviour
     {
+        [SerializeField] private float topBoundary = 14f;
+        [SerializeField] private float bottomBoundary = -14f;
+        [SerializeField] private float leftBoundary = -14f;
+        [SerializeField] private float rightBoundary = 14f;
         public List<GameObject> ItemsPrefab;
 
         private List<GameObject> _spawnedItems = new List<GameObject>();
@@ -21,13 +25,8 @@ namespace Assets.Scripts
             return ItemsPrefab[Random.Range(0, ItemsPrefab.Count)];
         }
 
-        private static Vector3 GenerateSpawnPos()
+        private Vector3 GenerateSpawnPos()
         {
-            const float topBoundary = 14f;
-            const float bottomBoundary = -14f;
-            const float leftBoundary = -14f;
-            const float rightBoundary = 14f;
-
             return new Vector3(
                 Random.Range(leftBoundary, rightBoundary),
                 0.5f,

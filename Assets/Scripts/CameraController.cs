@@ -14,11 +14,20 @@ namespace Assets.Scripts
 
         public static bool CutsceneTriggered => _cutsceneTriggered;
 
+        private void OnEnable() 
+        {
+            LeverController.OnLeverLowered += PlayElevationCutscene;
+        }
+
+        private void OnDisable()
+        {
+            LeverController.OnLeverLowered -= PlayElevationCutscene;
+        }
+        
         void Awake()
         {
             _cutsceneTriggered = false;
             _cameraAnimator = GetComponent<Animator>();
-            LeverController.OnLeverLowered += PlayElevationCutscene;
         }
 
         private void PlayElevationCutscene()

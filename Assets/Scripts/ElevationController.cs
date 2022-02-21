@@ -9,9 +9,14 @@ namespace Assets.Scripts
 
         private static readonly Vector3 EjectedPos = new Vector3(-14.5f, StartPos.y, StartPos.z);
 
-        private void Awake()
+        private void OnEnable()
         {
             LeverController.OnLeverLowered += SlideOutElevation;
+        }
+
+        private void OnDisable() 
+        {
+            LeverController.OnLeverLowered -= SlideOutElevation;    
         }
 
         private void SlideOutElevation()

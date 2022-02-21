@@ -5,11 +5,6 @@ namespace Assets.Scripts
 {
     public class LeverController : MonoBehaviour
     {
-        // Kiedy mysz nacisnie dzwignie
-        // opuść ją
-        // odpal cutscenke
-        // wysun wzniesienie
-
         private float _angularChange = -90f;
         
         private Quaternion _startRotation;
