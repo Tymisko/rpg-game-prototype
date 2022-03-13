@@ -8,7 +8,7 @@ It's a prototype of an RPG game with a simple square map.
 
 <!--- SCREENSHOT -->
 
-The player is steering his character from a 3D person view using `arrows` or `W`, `S`, `A`, `D` along with a `mouse` to rotate the camera. 
+The player is steering his character from a 3D person view using <kbd>arrows</kbd> or <kbd>W</kbd>, <kbd>A</kbd>, <kbd>S</kbd>, <kbd>D</kbd> along with a <kbd>mouse</kbd> to rotate the camera. 
 
 <!--- SCREENSHOT -->
 
